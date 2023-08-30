@@ -1,0 +1,111 @@
+@import './base/base';
+@import url('https://fonts.google.com/specimen/Oswald?subset=vietnamese&preview.text=jinchuriki&preview.text_type=custom&noto.script=Latn');
+$container: container;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+        .container {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 20px;
+            width: 800px;
+            height: 500px;
+            background: #000000;
+            transition: 0.25s;
+            .box {
+                position: relative;
+                // background: var(--img);
+                background-position: center bottom;
+                background-size: cover;
+                transition: .25s;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 20px;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: calc(100% + 15px);
+                    background: linear-gradient(#000,transparent,transparent,transparent,#000);
+                }
+                &::after {
+                    content: attr(data-text);
+                    white-space: nowrap;
+                    text-transform: uppercase;
+                    position: absolute;
+                    bottom: -100px;
+                    background: #fff;
+                    color: #000;
+                    font-size: 1em;
+                    font-weight: 600;
+                    padding: 5px 40px;
+                    letter-spacing: 5px;
+                    opacity: 0;
+                    transition: 0.5s;
+                    transition-delay: 0s;
+                    -webkit-box-reflect: below 2px linear-gradient(transparent,#000300);
+                }
+                &:hover::after {
+                    opacity: 1;
+                    bottom: -60px;
+                    transition-delay: 0.1s;
+                }
+                &:nth-child(even) {
+                    transform: translateY(30px);
+                }
+                &:nth-child(even) {
+                    transform: translateY(-50px);
+                }
+            }
+            &:hover .box {
+                filter: grayscale(1) brightness(1.25);
+            }
+            & .box:hover {
+                filter: grayscale(0) brightness(1.25);
+            }
+            &:has(.one:hover) {
+                grid-template-columns: 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
+            }
+            &:has(.two:hover) {
+                grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr;
+            }
+            &:has(.three:hover) {
+                grid-template-columns: 0.5fr 0.5fr 2fr 0.5fr 0.5fr;
+            }
+            &:has(.four:hover) {
+                grid-template-columns: 0.5fr 0.5fr 0.5fr 2fr 0.5fr;
+            }
+            &:has(.five:hover) {
+                grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 2fr;
+            }
+            .one {
+                background: url(/src/public/assets/img/sasuke.png) center / cover no-repeat;
+            }
+            .two {
+                background: url(/src/public/assets/img/jinchuriki.png) center / cover no-repeat;
+            }
+            .three {
+                background: url(/src/public/assets/img/kakashi.png) center / cover no-repeat;
+            }
+            .four {
+                background: url(/src/public/assets/img/naruto.png) center / cover no-repeat;
+            }
+            .five {
+                background: url(/src/public/assets/img/pain.png) center / cover no-repeat;
+            }
+        }
+
+}
